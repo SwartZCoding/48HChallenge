@@ -1,0 +1,38 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+div#alert, div#alertPerso{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all .15s linear;
+}
+div#alert.active, div#alertPerso.active{
+  opacity: 1;
+}
+div#alertPerso{
+  background-color: rgba(0, 0, 0, 0.25);
+}
+#alertPerso > p{
+  padding: 15px 10px; 
+  background-color: #333;
+  color: azure;
+  border-radius: 10px;
+}
