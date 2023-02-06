@@ -26,8 +26,4 @@ Route.get('/', async ({ view }) => {
 
 Route.get('/insert', 'TestsController.insertQuestion')
 
-Route.get('/question/:id', async ({ view }) => {
-  return view.render('question', {
-
-  })
-})
+Route.get('/question/:id', 'TestsController.show')
