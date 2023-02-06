@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./resources/**/*.{edge,js,ts,jsx,tsx,vue}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'blue-ynov': '#3dc842',
+      },
+    },
   },
   plugins: [],
 }
