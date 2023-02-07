@@ -12,7 +12,45 @@ const noGifs = [
 const alphRef = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
 cset("a6zz3df99g", '', -1); // compteur
 cset("Cqc9XX45G6s96CHjbDR3", '', -1); // nombre
+cset("cfglSprmMe23", 'false'); // fourchette 
 let hashCode = ""; 
+initGifs();
+
+function initGifs(){
+    let tab = [
+        "almost",
+        "good-job-2",
+        "good-job-1",
+        "well-done"
+    ]
+    gifs.forEach(elem => {
+        tab.push(elem)
+    });
+    noGifs.forEach(elem => {
+        tab.push(elem)
+    });
+    let gifDiv = document.querySelector('div#gifs');
+    tab.forEach(url => {
+        let img = document.createElement('img');
+        img.src = "img/gif/"+url+".gif";
+        img.style.opacity = "0";
+        img.style.position = "absolute";
+        gifDiv.appendChild(img);
+    });
+    window.addEventListener("load", event => {
+        let gifDiv = document.querySelector('div#gifs');
+        let imgs = gifDiv.childNodes;
+        for (let i = 0; i < imgs.length; i++) {
+            let img = imgs[i];
+            var isLoaded = img.complete && img.naturalHeight !== 0;
+            if(isLoaded){
+                setTimeout(() => {
+                    gifDiv.remove();
+                }, 1000);
+            }
+        }
+    });
+}
 
 // ===== COMMONS ==========
 function hideAlert(){
@@ -70,6 +108,8 @@ function coucou(elems, str) {
     return result;
 }
 
+const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+
 function persoHash(){
     const decal = parseInt(cget("Cqc9XX45G6s96CHjbDR3"));
     const base = "KONAMI";
@@ -82,8 +122,8 @@ function persoHash(){
     hashCode = result;
     return result;
 }
-function persoUnHash(ev){
-    let nb = parseInt(ev.target.value);
+function persoUnHash(ev = null, nb = 0){
+    if(ev) nb = parseInt(ev.target.value);
     if(Number.isNaN(nb)){
         document.querySelector('#hash').innerHTML = hashCode;
         return;
@@ -104,7 +144,8 @@ function persoUnHash(ev){
         else j = i - nb < 0 ? i - nb + alphRef.length : i - nb;
         result += alphRef[j];
     }
-    document.querySelector('#hash').innerHTML = result;
+    if(ev == null) return result;
+    else document.querySelector('#hash').innerHTML = result;
 }
 
 // ===== COOKIES ==========
@@ -144,12 +185,18 @@ function crm(name) {
 // ===== STEP 1 ===========
 function azerty(ev){
     ev.preventDefault();
-    if(alertOpen()) return;
+    if(alertOpen()) {
+        hideAlert();
+        return;
+    }else if(alertPersoOpen()) {
+        hideAlertPerso();
+        return;
+    }
     let elems = ev.target.elements;
 
     let input = coucou(elems, "number");
     let nb = parseInt(input.value);
-    if(nb < -35 || 35 < nb){
+    if(nb < -34 || 34 < nb || nb == 0){
         let nb = 0
         if(!cget("a6zz3df99g")){
             cset("a6zz3df99g", 1);
@@ -159,10 +206,11 @@ function azerty(ev){
         }
         if(nb == 3){
             alertPerso('Oups... Je me suis trompé dans la fourchette ;)');
+            cset("cfglSprmMe23", 'true');
             let txt = document.querySelector('form>p');
             let origin = txt.innerText;
             let base = "-100 et 100";
-            let newTxt = "-35 & 35";
+            let newTxt = "-34 & 34";
             let ref = txt.innerHTML.indexOf(base);
             if(ref != -1){
                 let tab = origin.split(base);
@@ -172,7 +220,6 @@ function azerty(ev){
             let i = Math.ceil(Math.random()*gifs.length-1);
             showAlert(gifs[i]);
         }
-        console.log(cget("a6zz3df99g"));
     }else{
         cset("Cqc9XX45G6s96CHjbDR3", input.value)
         if(cget("a6zz3df99g")){
@@ -208,8 +255,13 @@ function step2(){
 
 function azertyuiop(ev){
     ev.preventDefault();
-    
-    if(alertOpen()) return;
+    if(alertOpen()) {
+        hideAlert();
+        return;
+    }else if(alertPersoOpen()) {
+        hideAlertPerso();
+        return;
+    }
     let elems = ev.target.elements;
 
     let input = coucou(elems, "code");
@@ -229,6 +281,8 @@ function azertyuiop(ev){
             alertPerso("Je t'ai dis de mettre LE CODE !!!!");
         }else if(nb == 6){ // Nombre d'essais avant un hint
             alertPerso("Sérieux ?? 'le code'");
+        }else if(nb == 7){ // Nombre d'essais avant un hint
+            document.querySelector('form').innerHTML += "<p id='tips'>Sérieux ?? 'le code'</p>";
         }else{
             let i = Math.ceil(Math.random()*gifs.length-1);
             showAlert(gifs[i]);
@@ -259,19 +313,28 @@ function step3(){
     let input = coucou(form.elements, "code");
     input.value = "";
     input.setAttribute("onkeyup", "persoUnHash(event)")
-    let p = form.querySelector('p');
-    p.innerHTML = "Voici un code secret : <span id='hash'>"+persoHash()+"</span></br>&#192; toi de le décoder !</br>Noublie pas d'envoyer pour valider ;)";
+    let p = form.querySelector('p#tips');
+    if(p != null) p.remove();
+    p = form.querySelector('p:not(#tips)');
+    p.innerHTML = "Voici un code secret : <span id='hash'>"+persoHash()+"</span></br>&#192; toi de trouver la clé de déchiffrement (le changement du code en direct n'est que visuel, il n'a aucun impact)</br>Noublie pas d'envoyer pour valider ;)";
 }
 function qsd(ev){
     ev.preventDefault();
-    
-    if(alertOpen()) return;
+    if(alertOpen()) {
+        hideAlert();
+        return;
+    }else if(alertPersoOpen()) {
+        hideAlertPerso();
+        return;
+    }
     let elems = ev.target.elements;
 
     let input = coucou(elems, "code");
     let val = input.value;
-
-    if(val.toLowerCase() != cget("Cqc9XX45G6s96CHjbDR3")){
+    val = parseInt(val);
+    if(Number.isNaN(val)) return
+    let unHash = persoUnHash(null, val);
+    if(unHash != 'KONAMI'){
         let nb;
         if(!cget("a6zz3df99g")){
             cset("a6zz3df99g", 1);
@@ -279,7 +342,6 @@ function qsd(ev){
             nb = parseInt(cget("a6zz3df99g")) + 1;
             cset("a6zz3df99g", nb);
         }
-
 
         if(nb == 3){ // Nombre d'essais avant un hint
             let i = Math.ceil(Math.random()*noGifs.length-1);
@@ -289,7 +351,11 @@ function qsd(ev){
                 document.querySelector('#amxpc3df82').classList.add('active')
             }, 50);
         }else if(nb == 6){ // Nombre d'essais avant un hint
-            alertPerso("Peut-etre un nombre compris entre -35 & 35 ?");
+            let fork = cget("cfglSprmMe23") == "true" ? "-34 & 34" : "-100 & 100";
+            alertPerso("Peut-etre un nombre compris entre "+ fork +" ?");
+        }else if(nb == 7){ // Nombre d'essais avant un hint
+            let fork = cget("cfglSprmMe23") == "true" ? "-34 & 34" : "-100 & 100";
+            document.querySelector('form').innerHTML += "<p id='tips'>Peut-etre un nombre compris entre "+ fork +" ?</p>";
         }else{
             let i = Math.ceil(Math.random()*noGifs.length-1);
             showAlert(noGifs[i]);
@@ -313,7 +379,10 @@ function qsd(ev){
 
 function step4(){
     crm("a6zz3df99g");
-    let form = document.querySelector('form');
+    let form = document.querySelector('form')
+    let p = form.querySelector('p#tips');
+    if(p != null) p.remove();
+    p = form.querySelector('p:not(#tips)');
     form.classList.add('inactive');
     document.querySelector('#alert').removeAttribute('onclick');
     setTimeout(() => {
@@ -340,8 +409,8 @@ function step4(){
                             }, 50);
                         }, 1050);
                     }, 2000);
-                }, 50);
-            }, 1050);
+                }, 150);
+            }, 1150);
         }, 2000);
     }, 550);
 }
@@ -380,5 +449,3 @@ function finalStep() {
         }
     });
 }
-
-const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
