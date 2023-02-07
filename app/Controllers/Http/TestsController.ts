@@ -7,12 +7,11 @@ export default class TestsController {
   public async insertQuestion() {
     await Database.table('questions').insert({
       type: 0,
-      image:
-        'https://scontent-cdt1-1.xx.fbcdn.net/v/t39.30808-6/329184434_6197413313602101_8651905967376759687_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=730e14&_nc_ohc=88pi4y-0_UAAX9P6zbl&_nc_ht=scontent-cdt1-1.xx&oh=00_AfA6xve1FelXLmvp7HvOvRUM5b5S1nBnoihhE0sN_5FIDQ&oe=63E66892',
-      question: 'Trouvez le mot de passe de Henry Xazetui',
+      image: 'https://cdn.pixabay.com/photo/2013/07/13/12/51/lupe-160478_1280.png',
+      question: 'Analysez les dossiers',
       description:
-        'Les utilisateurs de réseaux sociaux ont tendence à trop parler ... Seriez-vous retrouver le mot de passe de Henry ?',
-      response: 'Max',
+        'Vous trouverez ci-dessous 1 ZIP. Trouvez les 2 codes cachés afin de passer à la question suivante. (Séparez les codes par une virgule)',
+      response: '3184,111221',
     })
   }
 

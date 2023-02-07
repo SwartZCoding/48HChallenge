@@ -10,23 +10,28 @@
         <p class="pb-10 text-white">{{ question.description }}</p>
 
         @if(question.type === 0)
+        @if(question.id === 4)
+        <a class="p-3.5 text-white" href="https://cdn.discordapp.com/attachments/1072077628401520640/1072454714005917756/ceci_ne_sert_a_rien.zip">Voici le lien du ZIP</a>
+        @endif
         <input type="text" name="response" id="response" class="mb-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Votre réponse">
         @elseif(question.type === 1)
         <!-- Multiple Choise need to make for here (Maximum 4 choise please) -->
         <div>
           <ul class="grid w-full grid-cols-2 gap-3 pb-10">
             <li>
-              <input type="checkbox" id="choise-1" value="" class="hidden peer">
-              <label for="choise-1"
-                     class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border-2 rounded-lg cursor-pointer text-primary-600 border-primary-600 dark:hover:text-white dark:border-primary-500 dark:peer-checked:border-primary-500 peer-checked:border-primary-600 peer-checked:bg-primary-600 hover:text-white peer-checked:text-white hover:bg-primary-500 dark:text-primary-500 dark:bg-gray-800 dark:hover:bg-primary-600 dark:hover:border-primary-600 dark:peer-checked:bg-primary-500">
-                Choix #1
-              </label>
+              <form action="/send" method="post">
+                <input type="checkbox" id="choise-1" value="" class="hidden peer">
+                <label for="choise-1"
+                       class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border-2 rounded-lg cursor-pointer text-primary-600 border-primary-600 dark:hover:text-white dark:border-primary-500 dark:peer-checked:border-primary-500 peer-checked:border-primary-600 peer-checked:bg-primary-600 hover:text-white peer-checked:text-white hover:bg-primary-500 dark:text-primary-500 dark:bg-gray-800 dark:hover:bg-primary-600 dark:hover:border-primary-600 dark:peer-checked:bg-primary-500">
+                  Choix #1
+                </label>
+              </form>
             </li>
           </ul>
         </div>
         @endif
 
-        <button class="inline-flex items-center text-white bg-blue-ynov hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
+        <button type="submit" class="inline-flex items-center text-white bg-blue-ynov hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">
           Valider votre réponse
           <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </button>
