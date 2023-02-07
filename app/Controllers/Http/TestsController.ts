@@ -2,8 +2,6 @@
 
 import Database from '@ioc:Adonis/Lucid/Database'
 import Question from 'App/Models/Question'
-import { req } from "pino-std-serializers";
-import * as console from "console";
 
 export default class TestsController {
   public async insertQuestion() {
@@ -17,7 +15,7 @@ export default class TestsController {
     })
   }
 
-  public async verify({ view, params, request, response}) {
+  public async verify({ params, request, response }) {
     // eslint-disable-next-line eqeqeq
     if (params.id == 1) {
       const question = await Question.findOrFail(1)
@@ -25,7 +23,7 @@ export default class TestsController {
 
       // eslint-disable-next-line eqeqeq
       if (input == question.response) {
-        response.redirect().toPath('/question/2')
+        response.redirect().toPath('/question/' + (question.id + 1))
       } else {
         response.redirect().toPath('/question/1')
       }
