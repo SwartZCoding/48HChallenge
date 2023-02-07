@@ -38,7 +38,7 @@ export default class TestsController {
     } else if (params.id == 6) {
       return view.render('buttons-2')
       // eslint-disable-next-line eqeqeq
-    }  else if (params.id == 7) {
+    }  else if (params.id == 2) {
       return view.render('troll')
     } else {
       const question = await Question.findOrFail(params.id)
