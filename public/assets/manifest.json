@@ -2,7 +2,5 @@
   "assets/app.css": "http://localhost:8080/assets/app.css",
   "assets/app.js": "http://localhost:8080/assets/app.js",
   "assets/images/mask.png": "http://localhost:8080/assets/images/mask.851731a6.png",
-  "assets/images/logo.svg": "http://localhost:8080/assets/images/logo.8017765b.svg",
-  "assets/images/lupe-gbfc7d02d5_640.png": "http://localhost:8080/assets/images/lupe-gbfc7d02d5_640.e82d7927.png",
-  "assets/images/loupe.png": "http://localhost:8080/assets/images/loupe.e82d7927.png"
+  "assets/images/logo.svg": "http://localhost:8080/assets/images/logo.8017765b.svg"
 }
