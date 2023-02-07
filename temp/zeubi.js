@@ -122,8 +122,8 @@ function persoHash(){
     hashCode = result;
     return result;
 }
-function persoUnHash(ev = null, nb = 0){
-    if(ev) nb = parseInt(ev.target.value);
+function persoUnHash(ev){
+    let nb = parseInt(ev.target.value);
     if(Number.isNaN(nb)){
         document.querySelector('#hash').innerHTML = hashCode;
         return;
@@ -144,8 +144,7 @@ function persoUnHash(ev = null, nb = 0){
         else j = i - nb < 0 ? i - nb + alphRef.length : i - nb;
         result += alphRef[j];
     }
-    if(ev == null) return result;
-    else document.querySelector('#hash').innerHTML = result;
+    document.querySelector('#hash').innerHTML = result;
 }
 
 // ===== COOKIES ==========
@@ -196,7 +195,7 @@ function azerty(ev){
 
     let input = coucou(elems, "number");
     let nb = parseInt(input.value);
-    if(nb < -34 || 34 < nb || nb == 0){
+    if(nb < -35 || 35 < nb || nb == 0){
         let nb = 0
         if(!cget("a6zz3df99g")){
             cset("a6zz3df99g", 1);
@@ -210,7 +209,7 @@ function azerty(ev){
             let txt = document.querySelector('form>p');
             let origin = txt.innerText;
             let base = "-100 et 100";
-            let newTxt = "-34 & 34";
+            let newTxt = "-35 & 35";
             let ref = txt.innerHTML.indexOf(base);
             if(ref != -1){
                 let tab = origin.split(base);
@@ -331,10 +330,8 @@ function qsd(ev){
 
     let input = coucou(elems, "code");
     let val = input.value;
-    val = parseInt(val);
-    if(Number.isNaN(val)) return
-    let unHash = persoUnHash(null, val);
-    if(unHash != 'KONAMI'){
+
+    if(val.toLowerCase() != cget("Cqc9XX45G6s96CHjbDR3")){
         let nb;
         if(!cget("a6zz3df99g")){
             cset("a6zz3df99g", 1);
@@ -342,6 +339,7 @@ function qsd(ev){
             nb = parseInt(cget("a6zz3df99g")) + 1;
             cset("a6zz3df99g", nb);
         }
+
 
         if(nb == 3){ // Nombre d'essais avant un hint
             let i = Math.ceil(Math.random()*noGifs.length-1);
@@ -351,10 +349,10 @@ function qsd(ev){
                 document.querySelector('#amxpc3df82').classList.add('active')
             }, 50);
         }else if(nb == 6){ // Nombre d'essais avant un hint
-            let fork = cget("cfglSprmMe23") == "true" ? "-34 & 34" : "-100 & 100";
+            let fork = cget("cfglSprmMe23") == "true" ? "-35 & 35" : "-100 & 100";
             alertPerso("Peut-etre un nombre compris entre "+ fork +" ?");
         }else if(nb == 7){ // Nombre d'essais avant un hint
-            let fork = cget("cfglSprmMe23") == "true" ? "-34 & 34" : "-100 & 100";
+            let fork = cget("cfglSprmMe23") == "true" ? "-35 & 35" : "-100 & 100";
             document.querySelector('form').innerHTML += "<p id='tips'>Peut-etre un nombre compris entre "+ fork +" ?</p>";
         }else{
             let i = Math.ceil(Math.random()*noGifs.length-1);
