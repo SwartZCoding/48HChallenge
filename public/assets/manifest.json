@@ -1,8 +1,20 @@
 {
   "assets/app.css": "http://localhost:8080/assets/app.css",
   "assets/app.js": "http://localhost:8080/assets/app.js",
-  "assets/images/mask.png": "http://localhost:8080/assets/images/mask.851731a6.png",
-  "assets/images/logo.svg": "http://localhost:8080/assets/images/logo.8017765b.svg",
-  "assets/images/lupe-gbfc7d02d5_640.png": "http://localhost:8080/assets/images/lupe-gbfc7d02d5_640.e82d7927.png",
-  "assets/images/loupe.png": "http://localhost:8080/assets/images/loupe.e82d7927.png"
+  "assets/images/gif/cesar-ave.gif": "http://localhost:8080/assets/images/gif/cesar-ave.gif",
+  "assets/images/gif/no.gif": "http://localhost:8080/assets/images/gif/no.gif",
+  "assets/images/gif/number.gif": "http://localhost:8080/assets/images/gif/number.gif",
+  "assets/images/gif/i-cannot-accept.gif": "http://localhost:8080/assets/images/gif/i-cannot-accept.gif",
+  "assets/images/gif/well-done.gif": "http://localhost:8080/assets/images/gif/well-done.gif",
+  "assets/images/gif/one-more.gif": "http://localhost:8080/assets/images/gif/one-more.gif",
+  "assets/images/gif/no-oprah.gif": "http://localhost:8080/assets/images/gif/no-oprah.gif",
+  "assets/images/gif/good-job-2.gif": "http://localhost:8080/assets/images/gif/good-job-2.gif",
+  "assets/images/gif/i-dont-accept.gif": "http://localhost:8080/assets/images/gif/i-dont-accept.gif",
+  "assets/images/gif/no-spidey.gif": "http://localhost:8080/assets/images/gif/no-spidey.gif",
+  "assets/images/gif/good-job-1.gif": "http://localhost:8080/assets/images/gif/good-job-1.gif",
+  "assets/images/gif/almost.gif": "http://localhost:8080/assets/images/gif/almost.gif",
+  "assets/images/gif/no-2.gif": "http://localhost:8080/assets/images/gif/no-2.gif",
+  "assets/images/konami.jpg": "http://localhost:8080/assets/images/konami.jpg",
+  "assets/images/mask.png": "http://localhost:8080/assets/images/mask.png",
+  "assets/images/logo.svg": "http://localhost:8080/assets/images/logo.svg"
 }

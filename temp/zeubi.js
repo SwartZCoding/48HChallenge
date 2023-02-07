@@ -14,6 +14,7 @@ cset("a6zz3df99g", '', -1); // compteur
 cset("Cqc9XX45G6s96CHjbDR3", '', -1); // nombre
 cset("cfglSprmMe23", 'false'); // fourchette 
 let hashCode = ""; 
+const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 initGifs();
 
 function initGifs(){
@@ -108,7 +109,6 @@ function coucou(elems, str) {
     return result;
 }
 
-const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 function persoHash(){
     const decal = parseInt(cget("Cqc9XX45G6s96CHjbDR3"));
