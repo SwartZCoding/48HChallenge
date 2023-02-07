@@ -27,3 +27,4 @@ Route.get('/', async ({ view }) => {
 Route.get('/insert', 'TestsController.insertQuestion')
 
 Route.get('/question/:id', 'TestsController.show')
+Route.post('/question/:id', 'TestsController.verify')

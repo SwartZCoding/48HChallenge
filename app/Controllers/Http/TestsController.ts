@@ -15,6 +15,10 @@ export default class TestsController {
     })
   }
 
+  public async verify({ view, params }) {
+
+  }
+
   public async show({ view, params }) {
     // eslint-disable-next-line eqeqeq
     if (params.id == 5) {
