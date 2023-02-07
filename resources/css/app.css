@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ #btn{
+   background-color: #40c781;
+   border-radius: 3px; /* Coins arrondis */
+   border-bottom: 2px solid #35a76e; /* Petite bordure en bas du bouton */
+   text-align: center; /* Centrer le texte */
+   width:100px;
+   height:100px;
+
+ }
+#btn a{
+  text-decoration: none; /* Supprimer le soulignage du lien */
+  line-height: 42px; /* Changer la hauteur de la ligne d'écriture */
+  color: #fff; /* Couleur du texte blanche */
+}
+
+
+.etape1:active::after{
+  content: "What?" !important;
+}
+
+.etape2:hover::after {
+  content: "Did" !important;
+}
+
+
+.etape3:hover::after {
+  content: "You" !important;
+}
+
+.etape4:hover::after {
+  content: "Change" !important;
+}
+
+.etape5:hover::after {
+  content: "The" !important;
+}
+
+
+.etape6:active::after {
+  content: "URL" !important;
+}
+
+
+.etape7:hover::after {
+  content: "NOT" !important;
+}
+
+
+.etape7:active::after {
+  content: "Moving?" !important;
+}
+.etape8:hover{
+  display:none;
+}
+.etape9:hover{
+  background-color:blue;
+}
+.etape10:hover{
+  display:none;
+}
+.container-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}

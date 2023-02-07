@@ -7,17 +7,25 @@ export default class TestsController {
   public async insertQuestion() {
     await Database.table('questions').insert({
       type: 0,
-      image: 'https://cdn.pixabay.com/photo/2013/07/13/12/51/lupe-160478_1280.png',
-      question: 'Analysez les dossiers',
-      description:
-        'Vous trouverez ci-dessous 1 ZIP. Trouvez les 2 codes cachés afin de passer à la question suivante. (Séparez les codes par une virgule)',
-      response: '3184,111221',
+      image:
+        'https://cdn.discordapp.com/attachments/888041306075594752/1072167843614961675/rick-roll.gif',
+      question: 'Trouvez le code ?',
+      description: 'Dernière question avant la fin du test !',
+      response: 'trouvé',
     })
   }
 
   public async show({ view, params }) {
-    const question = await Question.findOrFail(params.id)
-
-    return view.render('question', { question })
+    // eslint-disable-next-line eqeqeq
+    if (params.id == 5) {
+      return view.render('buttons')
+      // eslint-disable-next-line eqeqeq
+    } else if (params.id == 6) {
+      return view.render('buttons-2')
+      // eslint-disable-next-line eqeqeq
+    } else {
+      const question = await Question.findOrFail(params.id)
+      return view.render('question', { question })
+    }
   }
 }
