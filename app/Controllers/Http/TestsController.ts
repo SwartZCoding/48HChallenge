@@ -15,8 +15,19 @@ export default class TestsController {
     })
   }
 
-  public async verify({ view, params }) {
+  public async verify({ params, request, response }) {
+    // eslint-disable-next-line eqeqeq
+    if (params.id == 1) {
+      const question = await Question.findOrFail(1)
+      const input = request.input('response')
 
+      // eslint-disable-next-line eqeqeq
+      if (input == question.response) {
+        response.redirect().toPath('/question/' + (question.id + 1))
+      } else {
+        response.redirect().toPath('/question/1')
+      }
+    }
   }
 
   public async show({ view, params }) {
